@@ -1,0 +1,493 @@
+/* 
+========================
+   GLOBAL VARIABLES 
+========================
+*/
+:root {
+    --primary-color: #0f172a;   /* Dark Slate */
+    --secondary-color: #38bdf8; /* Sky Blue */
+    --accent-color: #0ea5e9;    /* Ocean Blue */
+    --text-color: #e2e8f0;      /* Light Gray */
+    --bg-color: #020617;        /* Very Dark Blue */
+    --card-bg: #1e293b;         /* Slate 800 */
+    --nav-bg: rgba(15, 23, 42, 0.95);
+    
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 
+========================
+   RESET & BASE STYLES 
+========================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 
+========================
+   HEADER & NAVIGATION 
+========================
+*/
+header {
+    background-color: var(--nav-bg);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--secondary-color);
+}
+
+/* 
+========================
+   BUTTONS 
+========================
+*/
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-color);
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* 
+========================
+   FOOTER 
+========================
+*/
+footer {
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* 
+========================
+   HOME PAGE 
+========================
+*/
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 2rem;
+    animation: fadeIn 1s ease-in;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero h1 span {
+    color: var(--secondary-color);
+}
+
+.hero h2 {
+    font-size: 2rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    max-width: 600px;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* 
+========================
+   ABOUT PAGE 
+========================
+*/
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.about-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.timeline {
+    margin-top: 2rem;
+    border-left: 2px solid var(--secondary-color);
+    padding-left: 2rem;
+}
+
+.timeline-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.6rem;
+    top: 5px;
+    width: 1rem;
+    height: 1rem;
+    background: var(--bg-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+}
+
+.timeline-date {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* 
+========================
+   SKILLS PAGE 
+========================
+*/
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.skill-bar {
+    margin-bottom: 1.5rem;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bg {
+    background: rgba(255,255,255,0.1);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--secondary-color);
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+/* Pseudo-animations using hover for "interactivity" without JS */
+.skill-category:hover .progress {
+    opacity: 1; /* Trigger repaint if needed, mostly for structure */
+}
+
+/* 
+========================
+   PROJECTS PAGE 
+========================
+*/
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--secondary-color);
+}
+
+.project-img {
+    height: 200px;
+    background: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 3rem;
+}
+
+.project-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tech-tag {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--secondary-color);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* 
+========================
+   CONTACT PAGE 
+========================
+*/
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #94a3b8;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--bg-color);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* 
+========================
+   ANIMATIONS 
+========================
+*/
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 
+========================
+   RESPONSIVE QUERIES 
+========================
+*/
+@media (min-width: 768px) {
+    .hero h1 { font-size: 4.5rem; }
+    .about-content { grid-template-columns: 1fr 2fr; }
+    .contact-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplified for this specific no-js request, normally would use checkbox hack */
+    
+    /* Using a simple CSS-only hamburger menu hack for mobile would be ideal, 
+       but for simplicity within "Clean" constraints, let's just stack standard nav or simple scroll */
+    .nav-links {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--primary-color);
+        padding: 1rem;
+        justify-content: space-around;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 1000;
+    } 
+    
+    nav { justify-content: center; }
+    .logo { margin-bottom: 0; display: none; } /* Hide logo on mobile to save space or adjust */
+    
+    header { padding: 0.5rem; display: none; } /* Hide top header on mobile, use bottom nav */
+    
+    body { padding-bottom: 4rem; } /* Space for bottom nav */
+    
+    /* Let's refine the mobile nav strategy to be more standard 'top bar' without JS */
+    header { display: block; position: relative; }
+    .logo { display: block; }
+    .nav-links { 
+        position: static; 
+        flex-direction: row; 
+        background: transparent; 
+        width: auto; 
+        border: none;
+        padding: 0;
+        gap: 1rem;
+    }
+    
+    .nav-links a { font-size: 0.9rem; }
+    nav { flex-direction: column; gap: 1rem; }
+}
